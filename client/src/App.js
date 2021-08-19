@@ -25,11 +25,15 @@ const App = (props) => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [movies]);
 
-  const deleteMovie = (id, movies) => {
-    return setMovies(id.filter((deleted) => deleted.indexOf(movies) !== -1));
+  const deleteMovie = (id) => {
+    setMovies(movies.filter((item) => item.id !== id));
   };
+
+  // const deleteMovie = (id, movies) => {
+  //   return setMovies(id.filter((deleted) => deleted.indexOf(movies) !== -1));
+  // };
 
   const addToFavorites = (movie) => {};
 
@@ -60,7 +64,7 @@ const App = (props) => {
               <MovieList movies={movies} />
             </Route>
 
-            <Route path="/movies/add">
+            <Route path="/add">
               <AddMovieForm setMovies={setMovies} />
             </Route>
 
